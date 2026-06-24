@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Adib Aiman | Software & Firmware Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Keyframe Animations for Glass Background */
+        @keyframes float-slow-1 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(40px, 60px) scale(1.1); }
+        }
+        @keyframes float-slow-2 {
+            0%, 100% { transform: translate(0px, 0px) scale(1.1); }
+            50% { transform: translate(-50px, -40px) scale(0.95); }
+        }
+        .animate-blob-1 { animation: float-slow-1 16s infinite ease-in-out; }
+        .animate-blob-2 { animation: float-slow-2 20s infinite ease-in-out; }
+
+        /* Scroll Reveal CSS Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill progress bars */
+        .skill { margin-bottom: 0.9rem; }
+        .skill .skill-track { background: rgba(148,163,184,0.06); height: 10px; border-radius: 9999px; overflow: hidden; position: relative; }
+        .skill .skill-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#34d399,#06b6d4); box-shadow: 0 4px 20px rgba(6,182,212,0.08); transition: width 1.2s cubic-bezier(0.2,0.9,0.2,1); position: relative; }
+        .skill-label { font-size: 0.875rem; color: #cbd5e1; display:flex; justify-content:space-between; }
+        .skill-percent { font-weight:700; color: #94a3b8; }
+
+        /* subtle loading shimmer on the fill */
+        .skill-fill::after {
+            content: "";
+            position: absolute;
+            right: -40%;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
+            transform: translateX(0);
+            animation: shimmer 1.6s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes shimmer { 0% { transform: translateX(-100%);} 100% { transform: translateX(200%);} }
+    </style>
+</head>
+<body class="bg-[#0b1120] text-slate-200 font-sans scroll-smooth relative min-h-screen overflow-x-hidden">
+
+    <!-- Dynamic Ambient Background Glass Blobs -->
+    <div class="absolute top-[-10%] left-[-20%] w-[600px] h-[600px] rounded-full bg-emerald-500/10 blur-[120px] pointer-events-none animate-blob-1"></div>
+    <div class="absolute top-[30%] right-[-20%] w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[100px] pointer-events-none animate-blob-2"></div>
+    <div class="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none animate-blob-1"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-[#0f172a]/40 backdrop-blur-xl border-b border-slate-700/40 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+        <a href="#" class="text-xl font-bold tracking-wider text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)] hover:scale-105 transition-transform">ADIB.DEV</a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="#about" class="hover:text-emerald-400 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 hover:after:w-full after:transition-all after:duration-300">About</a>
+            <a href="#education" class="hover:text-emerald-400 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 hover:after:w-full after:transition-all after:duration-300">Educations</a>
+            <a href="#skills" class="hover:text-emerald-400 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 hover:after:w-full after:transition-all after:duration-300">Skills</a>
+            <a href="#experience" class="hover:text-emerald-400 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 hover:after:w-full after:transition-all after:duration-300">Experience</a>
+            <a href="#projects" class="hover:text-emerald-400 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 hover:after:w-full after:transition-all after:duration-300">Projects</a>
+            <a href="#contact" class="hover:text-emerald-400 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 hover:after:w-full after:transition-all after:duration-300">Contact</a>
+        </div>
+        <a href="mailto:Adibaimanonly@gmail.com" class="bg-emerald-500/10 backdrop-blur-md border border-emerald-400/40 text-emerald-400 px-4 py-2 rounded text-sm hover:bg-emerald-400 hover:text-slate-950 hover:scale-105 font-bold transition-all duration-300 shadow-[0_0_15px_rgba(52,211,153,0.1)]">Get In Touch</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="about" class="reveal min-h-[85vh] flex flex-col md:flex-row items-center justify-between px-6 md:px-24 lg:px-48 max-w-7xl mx-auto py-16 md:py-24 gap-12 relative z-10">
+        <!-- Left Column: Text Content -->
+        <div class="flex-1 order-2 md:order-1">
+            <p class="text-emerald-400 font-mono mb-3 tracking-wider">Hi, my name is</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight mb-4 drop-shadow-md">
+                Muhammad Adib Aiman.
+            </h1>
+            <h2 class="text-2xl md:text-4xl font-bold text-slate-400 leading-tight mb-6">
+                I bridge the gap between software, IoT, and firmware.
+            </h2>
+            <p class="max-w-xl text-slate-400 text-base md:text-lg mb-8 leading-relaxed">
+                I am a versatile software engineer with a proven track record of optimizing full-stack applications, designing smart IoT dashboards, and validating low-level system performance across healthcare and embedded systems.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#projects" class="bg-emerald-500/20 backdrop-blur-md border border-emerald-400/50 text-emerald-300 font-bold px-6 py-3 rounded hover:bg-emerald-400 hover:text-slate-950 hover:scale-105 hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] transition-all duration-300 shadow-lg shadow-emerald-500/10">
+                    View My Work
+                </a>
+                <a href="http://surl.li/kzkrzn" target="_blank" class="bg-slate-800/30 backdrop-blur-md border border-slate-600/50 text-slate-300 px-6 py-3 rounded hover:border-emerald-400/60 hover:text-emerald-400 hover:scale-105 transition-all duration-300">
+                    <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column: Profile Picture Frame -->
+        <div class="flex-1 order-1 md:order-2 flex justify-center items-center">
+            <div class="relative group max-w-[280px] md:max-w-[320px]">
+                <div class="absolute -inset-1 bg-gradient-to-r bg-emerald-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                <div class="relative bg-slate-900/40 backdrop-blur-md p-2 rounded-2xl border border-slate-700/60 overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                    <img 
+                        src="profile.png" 
+                        alt="Muhammad Adib Aiman" 
+                        class="rounded-xl w-full h-auto object-cover filter grayscale hover:grayscale-0 transition-all duration-500 ease-in-out"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-800 max-w-7xl mx-auto opacity-40">
+
+    <!-- EDUCATIONS SECTION -->
+    <section id="education" class="reveal py-20 px-6 md:px-24 lg:px-48 max-w-4xl mx-auto relative z-10">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-slate-100">
+            <span class="text-emerald-400 font-mono text-xl mr-2">01.</span> Education
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-12">
+            <div class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-950/40 shadow-lg shadow-slate-950/10">
+                <img src="Ed1.png" alt="Educational image 1" class="w-full h-44 object-cover object-center bg-slate-800" />
+            </div>
+            <div class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-950/40 shadow-lg shadow-slate-950/10">
+                <img src="Ed2.png" alt="Educational image 2" class="w-full h-44 object-cover object-center bg-slate-800" />
+            </div>
+            <div class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-950/40 shadow-lg shadow-slate-950/10">
+                <img src="Ed3.png" alt="Educational image 3" class="w-full h-44 object-cover object-center bg-slate-800" />
+            </div>
+            <div class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-950/40 shadow-lg shadow-slate-950/10">
+                <img src="Ed4.png" alt="Educational image 4" class="w-full h-44 object-cover object-center bg-slate-800" />
+            </div>
+        </div>
+
+        <div class="space-y-12 relative border-l-2 border-slate-700/40 pl-6 ml-3">
+            <div class="relative">
+                <div class="absolute w-4 h-4 bg-emerald-400 rounded-full -left-[31px] top-1.5 border-4 border-[#0b1120] shadow-[0_0_8px_#34d399]"></div>
+                <h3 class="text-xl font-bold text-slate-200">Malaysia Certificate of Education (SPM) <span class="text-emerald-400">@ Mara Junior Science College Pengkalan Hulu</span></h3>
+                <p class="text-xs font-mono text-slate-500 mb-3">2015 – 2019 | Malaysia</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Completed secondary education with a focus on science subjects, achieving strong results and building a foundation in mathematics, physics, and computer studies.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute w-4 h-4 bg-slate-600 rounded-full -left-[31px] top-1.5 border-4 border-[#0b1120]"></div>
+                <h3 class="text-xl font-bold text-slate-200">Matriculation (A-Level equivalent) <span class="text-emerald-400">@ Penang Matriculation College</span></h3>
+                <p class="text-xs font-mono text-slate-500 mb-3">2020 – 2021 | Penang, Malaysia</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Focused on foundational science and engineering courses to prepare for university-level software engineering studies.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute w-4 h-4 bg-slate-600 rounded-full -left-[31px] top-1.5 border-4 border-[#0b1120]"></div>
+                <h3 class="text-xl font-bold text-slate-200">Bachelor of Software Engineering (Honours) with Multimedia System Development <span class="text-emerald-400">@ National University of Malaysia</span></h3>
+                <p class="text-xs font-mono text-slate-500 mb-3">2021 – 2025 | Malaysia</p>
+                <p class="text-slate-400 text-sm leading-relaxed">Graduated with a CGPA of 3.38, gaining expertise in software development, multimedia systems, and user experience design.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-800 max-w-7xl mx-auto opacity-40">
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="reveal py-20 px-6 md:px-24 lg:px-48 max-w-7xl mx-auto relative z-10">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-slate-100">
+            <span class="text-emerald-400 font-mono text-xl mr-2">02.</span> Technical Toolkit
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-900/40 backdrop-blur-md p-6 rounded-xl border border-slate-700/50 shadow-xl hover:border-slate-600/60 transition-all duration-300 hover:-translate-y-1">
+                <div class="text-emerald-400 text-2xl mb-4 drop-shadow-[0_0_8px_rgba(52,211,153,0.2)]"><i class="fas fa-code"></i></div>
+                <h3 class="text-xl font-bold text-slate-200 mb-4">Software & Frameworks</h3>
+                <div class="space-y-4 text-slate-400 text-sm">
+                    <div class="skill">
+                        <div class="skill-label"><span>Java (Play Framework, JPA/Hibernate)</span><span class="skill-percent">80%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="80"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>PHP (Laravel)</span><span class="skill-percent">70%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="70"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>C++ & ASP.NET</span><span class="skill-percent">65%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="65"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>RESTful API Development</span><span class="skill-percent">85%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="85"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>Frontend (HTML, CSS, Bootstrap)</span><span class="skill-percent">75%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="75"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/40 backdrop-blur-md p-6 rounded-xl border border-slate-700/50 shadow-xl hover:border-slate-600/60 transition-all duration-300 hover:-translate-y-1">
+                <div class="text-emerald-400 text-2xl mb-4 drop-shadow-[0_0_8px_rgba(52,211,153,0.2)]"><i class="fas fa-microchip"></i></div>
+                <h3 class="text-xl font-bold text-slate-200 mb-4">Hardware & Firmware</h3>
+                <div class="space-y-4 text-slate-400 text-sm">
+                    <div class="skill">
+                        <div class="skill-label"><span>Firmware Flashing (ADB, Fastboot, Flashzap)</span><span class="skill-percent">85%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="85"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>IoT Data (MQTT, Node-RED, Raspberry Pi)</span><span class="skill-percent">75%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="75"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>RF Tuning & Calibration</span><span class="skill-percent">70%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="70"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>CPKPI Measurement Testing</span><span class="skill-percent">72%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="72"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>Issue Reproduction & Debugging</span><span class="skill-percent">80%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="80"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/40 backdrop-blur-md p-6 rounded-xl border border-slate-700/50 shadow-xl hover:border-slate-600/60 transition-all duration-300 hover:-translate-y-1">
+                <div class="text-emerald-400 text-2xl mb-4 drop-shadow-[0_0_8px_rgba(52,211,153,0.2)]"><i class="fas fa-database"></i></div>
+                <h3 class="text-xl font-bold text-slate-200 mb-4">Databases & Analytics</h3>
+                <div class="space-y-4 text-slate-400 text-sm">
+                    <div class="skill">
+                        <div class="skill-label"><span>MySQL & MariaDB</span><span class="skill-percent">78%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="78"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>JDBC & Firebase</span><span class="skill-percent">68%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="68"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>Navicat Lite & phpMyAdmin</span><span class="skill-percent">72%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="72"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>JasperReports</span><span class="skill-percent">65%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="65"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-label"><span>Unity (VR UI/UX Design)</span><span class="skill-percent">60%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-fill="60"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-800 max-w-7xl mx-auto opacity-40">
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="reveal py-20 px-6 md:px-24 lg:px-48 max-w-4xl mx-auto relative z-10">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-slate-100">
+            <span class="text-emerald-400 font-mono text-xl mr-2">03.</span> Where I've Worked
+        </h2>
+
+        <div class="space-y-12 relative border-l-2 border-slate-700/40 pl-6 ml-3">
+            <div class="relative">
+                <div class="absolute w-4 h-4 bg-emerald-400 rounded-full -left-[31px] top-1.5 border-4 border-[#0b1120] shadow-[0_0_8px_#34d399]"></div>
+                <h3 class="text-xl font-bold text-slate-200">Assistant Engineer <span class="text-emerald-400">@ Motorola Solutions</span></h3>
+                <p class="text-xs font-mono text-slate-500 mb-3">10/11/2025 — Present | Bayan Lepas, Penang</p>
+                <ul class="space-y-2 text-slate-400 text-sm list-disc pl-4">
+                    <li>Managed Android AP firmware upgrades using ADB, Fastboot, and automated scripts.</li>
+                    <li>Executed RF tuning backup/restoration (XML/BBF) via Labtool and managed Mux switching.</li>
+                    <li>Reproduced and documented critical firmware defects to support regression testing.</li>
+                    <li>Performed CPKPI validation across latest Radio firmware to guarantee structural stability.</li>
+                </ul>
+            </div>
+
+            <div class="relative">
+                <div class="absolute w-4 h-4 bg-slate-600 rounded-full -left-[31px] top-1.5 border-4 border-[#0b1120]"></div>
+                <h3 class="text-xl font-bold text-slate-200">Software Developer (Protégé) <span class="text-emerald-400">@ Khazanah Nasional / S-Core IT Solutions</span></h3>
+                <p class="text-xs font-mono text-slate-500 mb-3">26/05/2025 — 04/10/2025 | Kuala Lumpur</p>
+                <ul class="space-y-2 text-slate-400 text-sm list-disc pl-4">
+                    <li>Developed backend modules for CAST, a Java platform used across 2,774 clinic/hospital branches.</li>
+                    <li>Built modular RESTful APIs and HTML views, drastically accelerating front-end layout integration.</li>
+                    <li>Reduced active application codebase bugs by 35% during critical cloud migration phases.</li>
+                    <li>Implemented JasperReports, automated background jobs, and granular user access controls.</li>
+                </ul>
+            </div>
+
+            <div class="relative">
+                <div class="absolute w-4 h-4 bg-slate-600 rounded-full -left-[31px] top-1.5 border-4 border-[#0b1120]"></div>
+                <h3 class="text-xl font-bold text-slate-200">IoT Software Engineer (Intern) <span class="text-emerald-400">@ Inari Technology</span></h3>
+                <p class="text-xs font-mono text-slate-500 mb-3">09/2024 — 02/2025 | Bayan Lepas, Penang</p>
+                <ul class="space-y-2 text-slate-400 text-sm list-disc pl-4">
+                    <li>Built a custom Laravel app displaying real-time environment metrics (temp, humidity, power) across 11 server rooms.</li>
+                    <li>Integrated Node-RED and MQTT-PHP protocols for rock-solid IoT server communication.</li>
+                    <li>Successfully automated environmental hardware control, leading to a 20% drop in energy usage.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-800 max-w-7xl mx-auto opacity-40">
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="reveal py-20 px-6 md:px-24 lg:px-48 max-w-7xl mx-auto relative z-10">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-slate-100">
+            <span class="text-emerald-400 font-mono text-xl mr-2">04.</span> Featured Accomplishments
+        </h2>
+
+        <div class="space-y-12">
+            
+            <!-- Project 1: Enterprise Medical System (S-Core IT Solutions) -->
+            <div class="bg-slate-900/40 backdrop-blur-md p-8 rounded-xl border border-slate-700/50 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 shadow-xl">
+                <div class="flex flex-col space-y-8">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs text-emerald-400 font-mono tracking-widest uppercase font-bold">Enterprise Software • S-Core IT Solutions</span>
+                            <span class="text-slate-500 text-xl"><i class="fas fa-hospital"></i></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-100 mb-3">CAST Clinic Management Platform</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Contributed to the development and optimization of a massive Java-based clinical management system used by 1,918 enterprise customers across 2,774 clinic and hospital branches[cite: 1]. Developed secure backend modules, integrated RESTful APIs, designed custom JasperReports, and automated background jobs.
+                        </p>
+                        <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs px-3 py-2 rounded inline-block font-medium">
+                            <i class="fas fa-bolt mr-2"></i>Slashed legacy system bugs by 35% during codebase migration.
+                        </div>
+                    </div>
+
+                    <!-- Phase 1: Team Recognition Slider -->
+                    <div class="flex flex-col space-y-3 w-full max-w-3xl mx-auto">
+                        <span class="text-xs font-mono text-slate-400 tracking-wider flex items-center gap-1.5"><i class="fas fa-trophy text-emerald-400"></i> Phase 1: Team Recognition</span>
+                        <div class="relative bg-slate-950/60 rounded-xl border border-slate-700/50 overflow-hidden shadow-inner aspect-[21/9] flex items-center justify-center group">
+                            <img id="cast-process-img" src="Top1.PNG" alt="CAST Architecture Recognition" class="w-full h-full object-contain p-2 transition-all duration-300">
+                            <div class="absolute bottom-0 inset-x-0 bg-slate-900/80 backdrop-blur-sm text-center py-1.5 text-xs font-mono text-emerald-400 px-2 truncate" id="cast-process-title">
+                                Award 1: Top Developer of the Month (Top1.PNG)
+                            </div>
+                            <button onclick="changeCastProcessSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-900/60 border border-slate-700/50 text-slate-200 w-8 h-8 flex items-center justify-center rounded-full text-sm hover:bg-emerald-500 hover:text-slate-950 transition-all duration-300">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button onclick="changeCastProcessSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-900/60 border border-slate-700/50 text-slate-200 w-8 h-8 flex items-center justify-center rounded-full text-sm hover:bg-emerald-500 hover:text-slate-950 transition-all duration-300">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="text-xs font-mono text-slate-500 text-center" id="cast-process-counter">Image 1 of 3</div>
+                    </div>
+
+                    <!-- Phase 2: Laptop Video Frame Showcase -->
+                    <div class="flex flex-col space-y-3 w-full max-w-2xl mx-auto pt-4">
+                        <span class="text-xs font-mono text-slate-400 tracking-wider text-center block"><i class="fas fa-laptop text-cyan-400"></i> Phase 2: Live Platform Demo Walkthrough</span>
+                        <div class="w-full">
+                            <div class="relative border-slate-700/60 bg-slate-900/40 backdrop-blur-md border-[8px] md:border-[12px] rounded-t-xl w-full aspect-[16/10] overflow-hidden shadow-2xl">
+                                <video class="w-full h-full object-cover bg-[#0f172a]" autoplay loop muted playsinline controls>
+                                    <source src="Video2.MP4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="relative bg-slate-800/60 h-2.5 rounded-b-xl w-[110%] -left-[5%] shadow-lg border-t border-slate-700/40">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-1 w-16 bg-slate-900 rounded-b"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Footer Badge Line -->
+                <div class="flex flex-wrap items-center gap-2 pt-6 mt-8 border-t border-slate-800/60">
+                    <span class="text-xs font-mono text-slate-500 mr-2">STACK:</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fab fa-java text-orange-500"></i> Java</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fab fa-bootstrap text-purple-500"></i> Bootstrap</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fas fa-cogs text-blue-400"></i> Play Framework</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Home Assistant Dashboard -->
+            <div class="bg-slate-900/40 backdrop-blur-md p-8 rounded-xl border border-slate-700/50 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 shadow-xl">
+                <div class="flex flex-col space-y-8">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs text-emerald-400 font-mono tracking-widest uppercase font-bold">IoT Infrastructure • Inari Technology</span>
+                            <span class="text-slate-500 text-xl"><i class="fas fa-chart-network"></i></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-100 mb-3">Inari Electricity Automation Dashboard</h3>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Architected an end-to-end telemetry system capturing **over 50 real-time data points** across facilities[cite: 2]. Integrated automated environmental controls for HVAC systems and managed multi-protocol verification pipelines to guarantee zero-latency state syncs[cite: 2].
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs px-3 py-2 rounded font-medium">
+                                <i class="fas fa-bolt mr-1.5"></i> **Energy Consumption Reduced by 18-20%**[cite: 2]
+                            </div>
+                            <div class="bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs px-3 py-2 rounded font-medium">
+                                <i class="fas fa-hourglass-half mr-1.5"></i> **Manual Monitoring Time Cut by 40%**[cite: 2]
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 1: Architecture & Process Slider -->
+                    <div class="flex flex-col space-y-3 w-full max-w-3xl mx-auto">
+                        <span class="text-xs font-mono text-slate-400 tracking-wider flex items-center gap-1.5"><i class="fas fa-cogs text-emerald-400"></i> Phase 1: Architecture & Process[cite: 2]</span>
+                        <div class="relative bg-slate-950/60 rounded-xl border border-slate-700/50 overflow-hidden shadow-inner aspect-[21/9] flex items-center justify-center group">
+                            <img id="inari-process-img" src="S1.png" alt="Inari Process Flow" class="w-full h-full object-contain p-2 transition-all duration-300">
+                            <div class="absolute bottom-0 inset-x-0 bg-slate-900/80 backdrop-blur-sm text-center py-1.5 text-xs font-mono text-emerald-400 px-2 truncate" id="inari-process-title">
+                                Step 1: Central Server Telemetry Architecture Model (S1.png)
+                            </div>
+                            <button onclick="changeProcessSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-900/60 border border-slate-700/50 text-slate-200 w-8 h-8 flex items-center justify-center rounded-full text-sm hover:bg-emerald-500 hover:text-slate-950 transition-all duration-300">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button onclick="changeProcessSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-900/60 border border-slate-700/50 text-slate-200 w-8 h-8 flex items-center justify-center rounded-full text-sm hover:bg-emerald-500 hover:text-slate-950 transition-all duration-300">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="text-xs font-mono text-slate-500 text-center" id="process-counter">Image 1 of 6</div>
+                    </div>
+
+                    <!-- Phase 2: Live UI Systems Slider -->
+                    <div class="flex flex-col space-y-3 w-full max-w-3xl mx-auto pt-4">
+                        <span class="text-xs font-mono text-slate-400 tracking-wider flex items-center gap-1.5 justify-center"><i class="fas fa-desktop text-cyan-400"></i> Phase 2: Live UI Systems (Result)[cite: 2]</span>
+                        <div class="relative bg-slate-950/60 rounded-xl border border-slate-700/50 overflow-hidden shadow-inner aspect-[21/9] flex items-center justify-center group">
+                            <img id="inari-slider-img" src="Inari1.png" alt="Inari UI Screen" class="w-full h-full object-contain p-2 transition-all duration-300">
+                            <div class="absolute bottom-0 inset-x-0 bg-slate-900/80 backdrop-blur-sm text-center py-1.5 text-xs font-mono text-cyan-400 px-2 truncate" id="inari-img-title">
+                                Screen 1: Welcome Portal (Inari1.png)
+                            </div>
+                            <button onclick="changeInariSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-900/60 border border-slate-700/50 text-slate-200 w-8 h-8 flex items-center justify-center rounded-full text-sm hover:bg-cyan-400 hover:text-slate-950 transition-all duration-300">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button onclick="changeInariSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-900/60 border border-slate-700/50 text-slate-200 w-8 h-8 flex items-center justify-center rounded-full text-sm hover:bg-cyan-400 hover:text-slate-950 transition-all duration-300">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <span id="inari-dot-0" class="w-2 h-2 rounded-full bg-emerald-500 cursor-pointer" onclick="goToInariSlide(0)"></span>
+                            <span id="inari-dot-1" class="w-2 h-2 rounded-full bg-slate-700 cursor-pointer" onclick="goToInariSlide(1)"></span>
+                            <span id="inari-dot-2" class="w-2 h-2 rounded-full bg-slate-700 cursor-pointer" onclick="goToInariSlide(2)"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap items-center gap-2 pt-4 mt-8 border-t border-slate-800/60">
+                    <span class="text-xs font-mono text-slate-500 mr-1">STACK:</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fab fa-laravel text-red-500"></i> Laravel[cite: 2]</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fas fa-database text-blue-400"></i> MySQL[cite: 2]</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fab fa-raspberry-pi text-red-600"></i> Pi OS[cite: 2]</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fas fa-network-wired text-orange-400"></i> MQTT-PHP[cite: 2]</span>
+                    <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fas fa-project-diagram text-red-500"></i> Node-RED[cite: 2]</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Decentralized Healthcare System -->
+            <div class="bg-slate-900/40 backdrop-blur-md p-8 rounded-xl border border-slate-700/50 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs text-emerald-400 font-mono tracking-widest uppercase font-bold">Decentralized Mobile Architecture • Final Year Project</span>
+                                <span class="text-slate-500 text-xl"><i class="fas fa-link"></i></span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-100 mb-3">StudentCare: Blockchain Healthcare Portal</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Engineered a native mobile application using an **Agile methodology** framework to eliminate face-to-face appointment scheduling bottlenecks and reduce intensive hospital waiting room overheads at the UKM Health Center.
+                            </p>
+                            <div class="grid grid-cols-1 gap-2 mb-6">
+                                <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] px-3 py-2 rounded font-medium">
+                                    <i class="fas fa-check-circle mr-1.5"></i> **Private Blockchain Ledger Integration**: Secure, decentralized immutable data ledger sync pipelines.
+                                </div>
+                                <div class="bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] px-3 py-2 rounded font-medium">
+                                    <i class="fas fa-star mr-1.5"></i> **UI/UX Validation**: Achieved a 4.63 / 5.00 overall user interface and system satisfaction rating across target study pools.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-700/60">
+                            <span class="text-xs font-mono text-slate-500 mr-1">STACK:</span>
+                            <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fab fa-android text-emerald-500"></i> Android Studio</span>
+                            <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fab fa-java text-orange-500"></i> Java</span>
+                            <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fas fa-cubes text-blue-400"></i> Blockchain</span>
+                            <span class="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-sm text-slate-300 text-xs px-2.5 py-1 rounded border border-slate-700/50"><i class="fas fa-fire text-orange-400"></i> Firebase</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <span class="text-xs font-mono text-slate-400 tracking-wider mb-4 flex items-center gap-1.5"><i class="fas fa-mobile-alt text-cyan-400"></i> Interactive Video Walkthrough Demo</span>
+                        <div class="relative mx-auto border-slate-800/80 bg-slate-900/40 backdrop-blur-md border-[14px] rounded-[2.5rem] h-[420px] w-[210px] shadow-2xl hover:scale-[1.01] transition-transform duration-300">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-4 w-24 bg-slate-800 rounded-b-xl z-20"></div>
+                            <div class="absolute -left-[18px] top-16 h-8 w-[4px] bg-slate-800 rounded-l-md"></div>
+                            <div class="absolute -left-[18px] top-28 h-8 w-[4px] bg-slate-800 rounded-l-md"></div>
+                            <div class="absolute -right-[18px] top-20 h-12 w-[4px] bg-slate-800 rounded-r-md"></div>
+                            <div class="rounded-[1.7rem] overflow-hidden w-full h-full bg-[#0f172a] flex items-center justify-center">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline controls>
+                                    <source src="Video1.MP4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Motorola Firmware Testing -->
+            <div class="bg-slate-900/40 backdrop-blur-md p-8 rounded-xl border border-slate-700/50 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 shadow-xl">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs text-emerald-400 font-mono tracking-widest uppercase">Embedded Validation</span>
+                        <span class="text-slate-600 text-xl"><i class="fas fa-microchip"></i></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-100 mb-3">Radio Firmware & CPKPI Validation</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        Executed Android AP/BP flashing pipelines, automated script initialization, and isolated hardware communication/Bluetooth regression anomalies across complex radio hardware stacks.
+                    </p>
+                    <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs px-3 py-2 rounded mb-6 font-medium">
+                        <i class="fas fa-bolt mr-2"></i>Ensured strict compliance utilizing low-level script debugging.
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-500 pt-3 border-t border-slate-800/60">
+                    <span><i class="fas fa-terminal text-slate-400"></i> ADB/Fastboot</span> • <span><i class="fas fa-satellite-dish text-cyan-400"></i> CPKPI Validation</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="reveal py-24 px-6 text-center max-w-xl mx-auto relative z-10">
+        <p class="text-emerald-400 font-mono text-sm mb-3">04. What's Next?</p>
+        <h2 class="text-4xl font-bold text-slate-100 mb-4">Get In Touch</h2>
+        <p class="text-slate-400 mb-8">
+            I am currently seeking full-time engineering capacities to scale dynamic infrastructure environments. Whether you have an opportunity or just want to say hi, my inbox is open!
+        </p>
+        <div class="space-y-4">
+            <a href="mailto:Adibaimanonly@gmail.com" class="inline-block bg-emerald-500/10 backdrop-blur-md border border-emerald-400/50 text-emerald-400 font-bold px-8 py-4 rounded hover:bg-emerald-400 hover:text-slate-950 hover:scale-105 hover:shadow-[0_0_20px_rgba(52,211,153,0.2)] transition-all duration-300 mb-4 shadow-lg shadow-emerald-500/5">
+                Say Hello (Adibaimanonly@gmail.com)
+            </a>
+            <div class="text-sm text-slate-500 block">
+                <i class="fas fa-map-marker-alt mr-2"></i>Kepala Batas, Pulau Pinang, Malaysia <br>
+                <i class="fas fa-phone mr-2"></i>+6011-6377-1719
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-slate-800/60 text-center text-xs font-mono text-slate-500 relative z-10">
+        <p>© 2026 Muhammad Adib Aiman. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS FOR SHOWCASE COMPONENT DRIVERS -->
+    <script>
+        // SCROLL REVEAL UTILITY DRIVER via IntersectionObserver API
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Reveal animation occurs once
+                }
+            });
+        };
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            root: null,
+            threshold: 0.12, // Element fires when 12% visible on stream viewport
+            rootMargin: "0px 0px -40px 0px"
+        });
+        document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+
+        // SKILLS PROGRESS BAR ANIMATION
+        function animateSkillFills(container) {
+            const fills = container.querySelectorAll('.skill-fill');
+            fills.forEach(fill => {
+                const value = Number(fill.getAttribute('data-fill') || 0);
+                // set a small timeout to allow CSS transition
+                requestAnimationFrame(() => {
+                    fill.style.width = value + '%';
+                });
+            });
+        }
+
+        const skillsSection = document.getElementById('skills');
+        const skillsObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillFills(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        if (skillsSection) skillsObserver.observe(skillsSection);
+
+
+        // CAST CLINIC PLATFORM - PROCESS GALLERY SLIDER LOGIC
+        const castProcessImages = ["Top1.PNG", "Top2.PNG", "Top3.PNG"];
+        const castProcessTitles = [
+            "Award 1: Top Developer of the Month (Top1.PNG)",
+            "Award 2: Engineering Commendation (Top2.PNG)",
+            "Award 3: Performance Excellence (Top3.PNG)"
+        ];
+        let currentCastProcessIndex = 0;
+
+        function changeCastProcessSlide(direction) {
+            currentCastProcessIndex += direction;
+            if (currentCastProcessIndex >= castProcessImages.length) currentCastProcessIndex = 0;
+            if (currentCastProcessIndex < 0) currentCastProcessIndex = castProcessImages.length - 1;
+            
+            document.getElementById('cast-process-img').src = castProcessImages[currentCastProcessIndex];
+            document.getElementById('cast-process-title').innerText = castProcessTitles[currentCastProcessIndex];
+            document.getElementById('cast-process-counter').innerText = `Image ${currentCastProcessIndex + 1} of 3`;
+        }
+
+        // INARI SMART DASHBOARD - PROCESS GALLERY SLIDER LOGIC
+        const processImages = ["S1.png", "S2.png", "S3.png", "S4.png", "S5.png", "S6.png"];
+        const processTitles = [
+            "Step 1: Central Server Telemetry Architecture Model (S1.png)",
+            "Step 2: Initialize Mosquitto MQTT Daemon Pipeline Execution (S2.png)",
+            "Step 3: Node-RED Broker Message Routing Dataflow (S3.png)",
+            "Step 4: Provisioning MySQL Database Connection Parameters (S4.png)",
+            "Step 5: Relational Schema Logging Storage Engine Structure (S5.png)",
+            "Step 6: Iterative System Integration Lifecycle Development Matrix (S6.png)"
+        ];
+        let currentProcessIndex = 0;
+
+        function changeProcessSlide(direction) {
+            currentProcessIndex += direction;
+            if (currentProcessIndex >= processImages.length) currentProcessIndex = 0;
+            if (currentProcessIndex < 0) currentProcessIndex = processImages.length - 1;
+            
+            document.getElementById('inari-process-img').src = processImages[currentProcessIndex];
+            document.getElementById('inari-process-title').innerText = processTitles[currentProcessIndex];
+            document.getElementById('process-counter').innerText = `Image ${currentProcessIndex + 1} of 6`;
+        }
+
+        // INARI SMART DASHBOARD - RESULT GALLERY SLIDER LOGIC
+        const inariImages = ["Inari1.png", "Inari2.png", "Inari3.png"];
+        const inariTitles = [
+            "Screen 1: Welcome Portal (Inari1.png)",
+            "Screen 2: User Account Registration (Inari2.png)",
+            "Screen 3: Live Telemetry & Glassmorphism Dashboard (Inari3.png)"
+        ];
+        let currentInariIndex = 0;
+
+        function updateInariSlider() {
+            const imgElement = document.getElementById('inari-slider-img');
+            const titleElement = document.getElementById('inari-img-title');
+            
+            imgElement.src = inariImages[currentInariIndex];
+            titleElement.innerText = inariTitles[currentInariIndex];
+            
+            for (let i = 0; i < inariImages.length; i++) {
+                const dot = document.getElementById(`inari-dot-${i}`);
+                if (i === currentInariIndex) {
+                    dot.className = "w-2 h-2 rounded-full bg-emerald-500 cursor-pointer shadow-[0_0_6px_#34d399]";
+                } else {
+                    dot.className = "w-2 h-2 rounded-full bg-slate-700 cursor-pointer";
+                }
+            }
+        }
+
+        function changeInariSlide(direction) {
+            currentInariIndex += direction;
+            if (currentInariIndex >= inariImages.length) currentInariIndex = 0;
+            if (currentInariIndex < 0) currentInariIndex = inariImages.length - 1;
+            updateInariSlider();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateInariSlider();
+        });
+
+        function goToInariSlide(index) {
+            currentInariIndex = index;
+            updateInariSlider();
+        }
+    </script>
+</body>
+</html>
